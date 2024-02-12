@@ -7,6 +7,7 @@ class Program
 {
     static async Task Main(string[] args)
     {
+        args = ["https://snowspacewars.azurewebsites.net/"];
         //**************************************************************************************
         //***  |    |    |    |                                            |    |    |    |    |
         //***  |    |    |    |       Change your key mappings here        |    |    |    |    |
