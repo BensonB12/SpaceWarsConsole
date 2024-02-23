@@ -97,6 +97,57 @@ class Program
                         Console.ReadKey();
                     }
                     break;
+                case var key when key == basicCannon:
+                    var weapon1 = "Basic Cannon";
+
+                    if (Shop.Any(item => item.Name.Equals(weapon1, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        if (!gameActions.Weapons.Contains("Basic Cannon"))
+                        {
+                            await gameActions.PurchaseItemAsync(weapon1);
+                        }
+                        gameActions.CurrentWeapon = "Basic Cannon";
+                        Console.WriteLine($"Purchase of {weapon1} requested.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid item. Please choose a valid item from the shop.");
+                    }
+                    break;
+                case var key when key == powerFist:
+                    var weapon2 = "Power Fist";
+
+                    if (Shop.Any(item => item.Name.Equals(weapon2, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        if (!gameActions.Weapons.Contains("Power Fist"))
+                        {
+                            await gameActions.PurchaseItemAsync(weapon2);
+                        }
+                        gameActions.CurrentWeapon = "Power Fist";
+                        Console.WriteLine($"Purchase of {weapon2} requested.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid item. Please choose a valid item from the shop.");
+                    }
+                    break;
+                case var key when key == railGun:
+                    var weapon3 = "Rail Gun";
+
+                    if (Shop.Any(item => item.Name.Equals(weapon3, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        if (!gameActions.Weapons.Contains("Rail Gun"))
+                        {
+                            await gameActions.PurchaseItemAsync(weapon3);
+                        }
+                        gameActions.CurrentWeapon = "Rail Gun";
+                        Console.WriteLine($"Purchase of {weapon3} requested.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid item. Please choose a valid item from the shop.");
+                    }
+                    break;
                 case var key when key == shopKey:
 
                     Console.WriteLine("please enter what you'd like to purchase from the shop, (if you've changed your mind enter x)");
