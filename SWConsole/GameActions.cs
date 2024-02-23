@@ -17,19 +17,26 @@ public class GameActions
         PlayerName = playerName;
     }
     public async Task RotateLeftAsync(bool quickTurn) => await rotate(Direction.Left, quickTurn);
-
+    public async Task FullRotateAsync() => await rotate(Direction.Left, false, true);
     public async Task RotateRightAsync(bool quickTurn) => await rotate(Direction.Right, quickTurn);
 
-    private async Task rotate(Direction direction, bool quickTurn)
+    private async Task rotate(Direction direction, bool quickTurn, bool fullTurn = false)
     {
-        heading = (direction, quickTurn) switch
+        if(fullTurn)
         {
-            (Direction.Right, true) => heading + 10,
-            (Direction.Right, false) => heading + 1,
-            (Direction.Left, true) => heading - 10,
-            (Direction.Left, false) => heading - 1,
-            _ => 0,//turn north if someone calls this with a bogus Direction
-        };
+            heading += 180;
+        }
+        else
+        {
+            heading = (direction, quickTurn) switch
+            {
+                (Direction.Right, true) => heading + 10,
+                (Direction.Right, false) => heading + 1,
+                (Direction.Left, true) => heading - 10,
+                (Direction.Left, false) => heading - 1,
+                _ => 0,//turn north if someone calls this with a bogus Direction
+            };
+        }
         heading = ClampRotation(heading);
         await apiService.QueueAction([new("changeHeading", heading.ToString())]);
     }

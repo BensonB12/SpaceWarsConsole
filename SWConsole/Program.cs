@@ -22,6 +22,10 @@ class Program
         const ConsoleKey shopKey = ConsoleKey.S;
         const ConsoleKey repairKey = ConsoleKey.R;
         const ConsoleKey readAndEmptyMessagesKey = ConsoleKey.M;
+        const ConsoleKey basicCannon = ConsoleKey.D1;
+        const ConsoleKey powerFist = ConsoleKey.D2;
+        const ConsoleKey railGun = ConsoleKey.D3;
+        const ConsoleKey turnAround = ConsoleKey.DownArrow;
 
         Uri baseAddress = getApiBaseAddress(args);
         using HttpClient httpClient = new HttpClient() { BaseAddress = baseAddress };
@@ -74,6 +78,9 @@ class Program
                     break;
                 case var key when key == fireKey:
                     await gameActions.FireWeaponAsync();
+                    break;
+                case var key when key == turnAround:
+                    await gameActions.FullRotateAsync();
                     break;
                 case var key when key == clearQueueKey:
                     await gameActions.ClearQueueAsync();
