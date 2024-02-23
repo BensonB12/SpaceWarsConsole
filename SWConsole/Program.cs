@@ -98,21 +98,8 @@ class Program
                     }
                     break;
                 case var key when key == basicCannon:
-                    var weapon1 = "Basic Cannon";
-
-                    if (Shop.Any(item => item.Name.Equals(weapon1, StringComparison.OrdinalIgnoreCase)))
-                    {
-                        if (!gameActions.Weapons.Contains("Basic Cannon"))
-                        {
-                            await gameActions.PurchaseItemAsync(weapon1);
-                        }
                         gameActions.CurrentWeapon = "Basic Cannon";
-                        Console.WriteLine($"Purchase of {weapon1} requested.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid item. Please choose a valid item from the shop.");
-                    }
+                        Console.WriteLine($"Equipt of Basic Cannon requested.");
                     break;
                 case var key when key == powerFist:
                     var weapon2 = "Power Fist";
@@ -122,7 +109,9 @@ class Program
                         if (!gameActions.Weapons.Contains("Power Fist"))
                         {
                             await gameActions.PurchaseItemAsync(weapon2);
+                            gameActions.Weapons.Add("Power Fist");
                         }
+
                         gameActions.CurrentWeapon = "Power Fist";
                         Console.WriteLine($"Purchase of {weapon2} requested.");
                     }
@@ -139,6 +128,7 @@ class Program
                         if (!gameActions.Weapons.Contains("Rail Gun"))
                         {
                             await gameActions.PurchaseItemAsync(weapon3);
+                            gameActions.Weapons.Add("Rail Gun");
                         }
                         gameActions.CurrentWeapon = "Rail Gun";
                         Console.WriteLine($"Purchase of {weapon3} requested.");
